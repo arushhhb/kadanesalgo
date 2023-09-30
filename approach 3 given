@@ -1,0 +1,27 @@
+// right approach by instructor
+#include<bits/stdc++.h>
+using namespace std;
+int maxSumSubarray(vector<int> arr){
+  bool allNeg=true;   //chekcing whether all elemnts are negative or not
+  int largest=INT_MIN;  
+for (int x: arr){
+  if(x>0){
+allNeg=false;
+  }
+largest=max(largest,x);
+}
+//check special case if allNeg is still true and now we have largest
+if (allNeg){
+return largest;
+}
+int cs=0;
+int maxi=0;
+for(int x: arr){
+cs=cs+x;
+if(cs<0){
+cs=0;
+}
+maxi=max(maxi,cs);
+}
+return maxi;
+}
